@@ -7,10 +7,10 @@ const dialogMenu = () => {
         let menuBtn = target.closest('.menu');
         if (menuBtn && menuOpen) {
             menuOpen = false;
-            menu.style.position = 'relative';
+            menu.classList.add('showHide-menu');
         } else if (target !== menu && !menuOpen) {
             menuOpen = true;
-            menu.style.position = 'absolute';
+            menu.classList.remove('showHide-menu');
         }
     });
 };
