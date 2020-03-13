@@ -1,4 +1,4 @@
-const dialogMenu = () => {
+const popupDialogMenu = () => {
     const menu = document.querySelector('.popup-dialog-menu');
     let menuOpen = true;
 
@@ -15,4 +15,4 @@ const dialogMenu = () => {
     });
 };
 
-export default dialogMenu;
+export default popupDialogMenu;
