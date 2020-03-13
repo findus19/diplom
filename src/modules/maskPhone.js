@@ -34,9 +34,6 @@ function maskPhone(masked = '+7 (___) ___-__-__') {
         item.addEventListener("focus", mask);
 	    item.addEventListener("blur", mask);
     })
-	/* elem.addEventListener("input", mask);
-	elem.addEventListener("focus", mask);
-	elem.addEventListener("blur", mask); */
 }
 
 export default maskPhone;
