@@ -6,6 +6,8 @@ import scroll from './modules/scroll';
 import maskPhone from './modules/maskPhone';
 import popupRepairTypes from './modules/popupRepairTypes';
 import popupPrivacy from './modules/popupPrivacy';
+import tooltips from './modules/formula';
+import formulaSlider from './modules/formulaSlider';
 
 openPhone();
 
@@ -18,3 +20,7 @@ maskPhone();
 popupRepairTypes();
 
 popupPrivacy();
+
+tooltips();
+
+formulaSlider();
