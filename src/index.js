@@ -8,6 +8,7 @@ import popupRepairTypes from './modules/popupRepairTypes';
 import popupPrivacy from './modules/popupPrivacy';
 import tooltips from './modules/formula';
 import formulaSlider from './modules/formulaSlider';
+import partners from './modules/partners';
 
 openPhone();
 
@@ -24,3 +25,5 @@ popupPrivacy();
 tooltips();
 
 formulaSlider();
+
+partners();
