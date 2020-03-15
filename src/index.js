@@ -11,6 +11,7 @@ import tooltips from './modules/formula';
 import formulaSlider from './modules/formulaSlider';
 import partners from './modules/partners';
 import reviews from './modules/reviews';
+import popupConsultation from './modules/modals/popupConsultation';
 
 
 openPhone();
@@ -34,4 +35,6 @@ formulaSlider();
 partners();
 
 reviews();
+
+popupConsultation();
 
