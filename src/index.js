@@ -9,10 +9,11 @@ import popupRepairTypes from './modules/modals/popupRepairTypes';
 import popupPrivacy from './modules/modals/popupPrivacy';
 import tooltips from './modules/formula';
 import formulaSlider from './modules/formulaSlider';
-import partners from './modules/partners';
-import reviews from './modules/reviews';
+import partners from './modules/partnersCarousel';
+import reviews from './modules/reviewsCarousel';
 import popupConsultation from './modules/modals/popupConsultation';
 import openPopupThank from './modules/modals/popupThank';
+import scheme from './modules/schemesCarousel';
 
 
 openPhone();
@@ -39,5 +40,7 @@ reviews();
 
 popupConsultation();
 
-openPopupThank();
+//openPopupThank();
+
+scheme();
 

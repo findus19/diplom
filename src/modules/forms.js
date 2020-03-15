@@ -1,6 +1,5 @@
 import {openPopupThank} from './modals/popupThank';
 const forms = document.querySelectorAll('.feedback_form, .feedback-block__form');
-const statusMessage = document.createElement('div');
 
 const postData = (body) => {
     return fetch('./server.php', {
@@ -22,18 +21,18 @@ const handlerForm = (event) =>{
         alert('Согласитесь с политикой конфиденциальности');
     } else{
 
-        const formData = new FormData(target);
-        let body = {};
-        formData.forEach((val, key) => {
-            body[key] = val;
-        });
+      const formData = new FormData(target);
+      let body = {};
+      formData.forEach((val, key) => {
+          body[key] = val;
+      });
+      console.log(321);
+      postData(body).then((response) => {
+        if (response.status !== 200) {
+          throw new Error(response.statusText);
+        }
 
-        postData(body).then((response) => {
-      if (response.status !== 200) {
-        throw new Error(response.statusText);
-      }
-  
-      openPopupThank();
+        openPopupThank();
   
     }, (error) => {
   

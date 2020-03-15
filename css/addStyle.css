@@ -1,3 +1,12 @@
+.modal_open {
+  visibility: visible;
+}
+.popup-transparency-slider {
+  overflow: unset;
+}
+.scheme-slider {
+  overflow: unset;
+}
 .formula-item-popup {
   transition: opacity .5s;
   will-change: opacity;
@@ -7,7 +16,7 @@
   opacity: 1;
 }
 .tooltip_reverse {
-  top: 160px;
+  padding-top: 40px;
   bottom: -210px;
 }
 .tooltip_reverse:before {
@@ -86,20 +95,4 @@
   #reviews-arrow_left {
       top: 50%;
   }
-}
-.modal_open {
-  visibility: visible;
-}
-.popup-transparency-slider {
-  overflow: unset;
-}
-
-.loader {
-  border: 10px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 10px solid #19b5fe;
-  width: 50px;
-  height: 50px;
-  display: inline-block;
-  animation: spin 2s linear infinite;
 }

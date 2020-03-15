@@ -2,9 +2,9 @@
 export const openPopupThank = () => {
     const popupThank = document.querySelector('.popup-tnank');
     document.body.addEventListener('click', (event) => {
-        const target = event.target;
+        let target = event.target;
         popupThank.style.visibility = 'visible';
-        document.body.style.overflow = 'hidden';
+        //document.body.style.overflow = 'hidden';
         target = target.matches('.close');
         if(target){
             popupThank.style.visibility = 'hidden';
@@ -12,6 +12,5 @@ export const openPopupThank = () => {
         }
     })
 };
-
 
 export default openPopupThank;
