@@ -110,7 +110,9 @@ export class SliderCarousel {
       if (!target.matches(`.${this.classTab}`)) return;
 
       const topical = document.querySelector(`.${this.classTab}.active`);
-      topical .classList.remove('active');
+      if (topical) {
+        topical.classList.remove('active');
+      }
 
       target.classList.add('active');
 

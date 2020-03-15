@@ -14,7 +14,8 @@ import reviews from './modules/reviewsCarousel';
 import popupConsultation from './modules/modals/popupConsultation';
 import openPopupThank from './modules/modals/popupThank';
 import scheme from './modules/schemesCarousel';
-
+import tooltipsProblems from './modules/problems';
+import accordion from './modules/accordion';
 
 openPhone();
 
@@ -43,4 +44,8 @@ popupConsultation();
 //openPopupThank();
 
 scheme();
+
+tooltipsProblems();
+
+accordion();
 
