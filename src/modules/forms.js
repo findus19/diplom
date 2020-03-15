@@ -1,3 +1,4 @@
+import {openPopupThank} from './modals/popupThank';
 const forms = document.querySelectorAll('.feedback_form, .feedback-block__form');
 const statusMessage = document.createElement('div');
 
@@ -32,7 +33,7 @@ const handlerForm = (event) =>{
         throw new Error(response.statusText);
       }
   
-      openThanksPopup();
+      openPopupThank();
   
     }, (error) => {
   
