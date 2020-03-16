@@ -20,6 +20,7 @@ export class SliderCarousel {
     this.main = document.querySelector(main);
     this.wrap = document.querySelector(wrap);
     this.slides = document.querySelector(wrap).children;
+    this.first = this.slides[0];
     this.next = document.querySelector(next);
     this.prev = document.querySelector(prev);
     this.slidesToShow = slidesToShow;
@@ -44,14 +45,13 @@ export class SliderCarousel {
     this.addStyle();
 
     if (!this.prev && !this.next && !this.tabs) {
-      console.log(123)
       this.addArrow();
     }
 
     if (this.tabs) {
       this.tabSlider();
     } else {
-      this.controlSlider();
+      this.checkSlider();
     }
 
     this.responsiveInit();
@@ -67,38 +67,43 @@ export class SliderCarousel {
   }
 
   addStyle() {
-    let style = document.getElementById(`sliderCarousel-style${this.numberSlider}`);
+    this.style = document.getElementById(`sliderCarousel-style${this.numberSlider}`);
 
-    if (!style) {
-      style = document.createElement('style');
-      style.id = `sliderCarousel-style${this.numberSlider}`;
+    if (!this.style) {
+      this.style = document.createElement('style');
+      this.style.id = `sliderCarousel-style${this.numberSlider}`;
     }
 
-    style.textContent = `
-      .glo-wrap {
-        overflow: hidden;
-      }
-      .glo-slider${this.numberSlider} {
-        display: flex;
-        ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : ''}
-        transition: transform .5s;
-        will-change: transform;
-      }
-      .glo-slider${this.numberSlider} .glo-slider__item {
-        max-width: none;
-        flex: 0 0 ${this.options.widthSlide}%;
-        align-items: center;
-        justify-content: center;
-        margin: auto 0;
-      }
+    this.style.textContent = `
+    .glo-wrap {
+      overflow: hidden;
+    }
+    .glo-wrap .glo-slider${this.numberSlider} {
+      display: flex;
+      ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : 'flex-wrap: nowrap;'}
+    }
+    .glo-slider${this.numberSlider} .glo-slider__item {
+      max-width: none;
+      flex: 0 0 ${this.options.widthSlide}%;
+      align-items: center;
+      justify-content: center;
+      margin: auto 0;
+      transition: margin-left .5s;
+      will-change: margin-left;
+    }
     `;
 
-    document.head.appendChild(style);
+    document.head.appendChild(this.style);
   }
 
-  controlSlider() {
+  checkSlider() {
     this.prev.addEventListener('click', this.prevSlider.bind(this));
     this.next.addEventListener('click', this.nextSlider.bind(this));
+  }
+
+  removeStyle() {
+    this.style.remove();
+    this.style = null;
   }
 
   tabSlider() {
@@ -122,7 +127,7 @@ export class SliderCarousel {
 
   toSlide(position) {
     this.options.position = position;
-    this.wrap.style.transform = `translate${this.moveSlide}(-${this.options.position * this.options.widthSlide}%)`;
+    this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
   
     this.main.dispatchEvent(this.tabEvent);
   }
@@ -135,7 +140,7 @@ export class SliderCarousel {
         this.options.position = this.options.maxPosition;
       }
 
-      this.wrap.style.transform = `translate${this.moveSlide}(-${this.options.position * this.options.widthSlide}%)`;
+      this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
     }
 
     this.main.dispatchEvent(this.event);
@@ -149,7 +154,7 @@ export class SliderCarousel {
         this.options.position = 0;
       }
 
-      this.wrap.style.transform = `translate${this.moveSlide}(-${this.options.position * this.options.widthSlide}%)`;
+      this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
     }
 
     this.main.dispatchEvent(this.event);
@@ -158,15 +163,12 @@ export class SliderCarousel {
   addArrow() {
     this.prev = document.createElement('button');
     this.next = document.createElement('button');
-    console.log(123)
+
     this.prev.className = 'glo-slider__prev';
     this.next.className = 'glo-slider__next';
 
     this.main.appendChild(this.prev);
     this.main.appendChild(this.next);
-
-    this.tabs.appendChild(this.prev);
-    this.tabs.appendChild(this.next);
 
     const style = document.createElement('style');
     style.textContent = `

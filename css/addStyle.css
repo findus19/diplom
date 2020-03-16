@@ -152,3 +152,10 @@
 .problems-one-slide .problems-prev-slide {
   margin-left: -100%;
 }
+.popup_open {
+  visibility: visible;
+}
+
+/* .popup-transparency-slider {
+  overflow: unset;
+} */

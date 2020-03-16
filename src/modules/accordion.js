@@ -3,7 +3,6 @@ const accordion = () => {
 
     accord.addEventListener('click', () => {
         const target = event.target;
-        console.log(123)
         if (!target.matches('.title_block')) return;
 
         const current = accord.querySelector('.msg-active');
