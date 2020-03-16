@@ -4,12 +4,12 @@ const popupConsultation = () => {
     document.body.addEventListener('click', (event) => {
         let target = event.target;
         if(target.closest('.button_wide')){
-            popupCons.style.visibility = 'visible';
+            popupCons.classList.add('popup_open');
             document.body.style.overflow = 'hidden';
         } else{
             target = target.matches('.close');
             if(target){
-                popupCons.style.visibility = 'hidden';
+                popupCons.classList.remove('popup_open');
                 document.body.style.overflow = 'visible';
             }
         }

@@ -4,12 +4,12 @@ const popupRepairTypes = () => {
     document.body.addEventListener('click', (event) => {
         let target = event.target;
         if(target.closest('.link-list')){
-            popupRepair.style.visibility = 'visible';
+            popupRepair.classList.add('popup_open');
             document.body.style.overflow = 'hidden';
         } else{
             target = target.closest('.popup-dialog-repair-types');
             if(!target){
-                popupRepair.style.visibility = 'hidden';
+                popupRepair.classList.remove('popup_open');
                 document.body.style.overflow = 'visible';
             }
         }

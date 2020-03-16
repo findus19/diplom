@@ -4,12 +4,12 @@ const popupPrivacy = () => {
     document.body.addEventListener('click', (event) => {
         let target = event.target;
         if(target.closest('.link-privacy')){
-            popupPrivacy.style.visibility = 'visible';
+            popupPrivacy.classList.add('popup_open');
             document.body.style.overflow = 'hidden';
         } else{
             target = target.closest('.popup-dialog-privacy');
             if(!target){
-                popupPrivacy.style.visibility = 'hidden';
+                popupPrivacy.classList.remove('popup_open');
                 document.body.style.overflow = 'visible';
             }
         }

@@ -1,5 +1,5 @@
 import {openPopupThank} from './modals/popupThank';
-const forms = document.querySelectorAll('.feedback_form, .feedback-block__form');
+const forms = document.querySelectorAll('.feedback__form, .feedback-block__form');
 
 const postData = (body) => {
     return fetch('./server.php', {
@@ -26,21 +26,19 @@ const handlerForm = (event) =>{
       formData.forEach((val, key) => {
           body[key] = val;
       });
-      console.log(321);
+      
       postData(body).then((response) => {
         if (response.status !== 200) {
           throw new Error(response.statusText);
         }
-
+        console.log(321);
         openPopupThank();
   
-    }, (error) => {
+      }, (error) => {
+        console.log(error);
+      });
   
-      console.log(error);
-      
-    });
-  
-    target.reset();
+      target.reset();
     }
 };
 

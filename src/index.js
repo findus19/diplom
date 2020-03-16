@@ -17,6 +17,7 @@ import scheme from './modules/schemesCarousel';
 import tooltipsProblems from './modules/problems';
 import accordion from './modules/accordion';
 import popupTransparency from './modules/modals/popupTransparency';
+import services from './modules/services';
 
 openPhone();
 
@@ -42,7 +43,7 @@ reviews();
 
 popupConsultation();
 
-//openPopupThank();
+openPopupThank();
 
 scheme();
 
@@ -51,6 +52,8 @@ tooltipsProblems();
 accordion();
 
 popupTransparency();
+
+services();
 
 
 

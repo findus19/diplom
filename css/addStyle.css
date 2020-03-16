@@ -7,6 +7,12 @@
 .scheme-slider {
   overflow: unset;
 }
+.popup-repair-types-content-table {
+  overflow-x: hidden;
+}
+.nav-list {
+  transition: none;
+}
 .formula-item-popup {
   transition: opacity .5s;
   will-change: opacity;
@@ -155,7 +161,9 @@
 .popup_open {
   visibility: visible;
 }
-
-/* .popup-transparency-slider {
-  overflow: unset;
+/* .popup-arrow_transparency {
+  visibility: visible;
+} */
+/* #transparency_right {
+  visibility: visible;
 } */

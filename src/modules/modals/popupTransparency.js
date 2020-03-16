@@ -23,11 +23,12 @@ const popupOpenTransparency = () => {
     document.body.addEventListener('click', (event) => {
         let target = event.target;
         if(target.closest('.transparency-item__img')){
-            transparencyPopup.style.visibility = 'visible';
+            transparencyPopup.classList.add('popup_open');
+            document.body.style.overflow = 'hidden';
         } else{
             target = target.closest('.popup-dialog-transparency');
             if(!target){
-                transparencyPopup.style.visibility = 'hidden';
+                transparencyPopup.classList.remove('popup_open');
                 document.body.style.overflow = 'visible';
             }
         }
