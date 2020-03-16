@@ -17,7 +17,6 @@ import scheme from './modules/schemesCarousel';
 import tooltipsProblems from './modules/problems';
 import accordion from './modules/accordion';
 import popupTransparency from './modules/modals/popupTransparency';
-//import openHandler from './modules/openHandler';
 
 openPhone();
 
@@ -53,5 +52,5 @@ accordion();
 
 popupTransparency();
 
-//openHandler();
+
 
