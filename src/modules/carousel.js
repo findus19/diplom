@@ -6,9 +6,9 @@ export class SliderCarousel {
     prev,
     infinity = false,
     position = 0,
-    slidesToShow = 3,
+    slidesShow = 3,
     responsive = [],
-    numberSlider = 1,
+    numSlider = 1,
     tabs,
     classTab = 'glo__tab',
     moveSlide = 'x'
@@ -23,15 +23,15 @@ export class SliderCarousel {
     this.first = this.slides[0];
     this.next = document.querySelector(next);
     this.prev = document.querySelector(prev);
-    this.slidesToShow = slidesToShow;
+    this.slidesShow = slidesShow;
     this.options = {
       position,
       infinity,
-      widthSlide: Math.floor(100 / this.slidesToShow),
-      maxPosition: this.slides.length - this.slidesToShow
+      widthSlide: Math.floor(100 / this.slidesShow),
+      maxPosition: this.slides.length - this.slidesShow
     };
     this.responsive = responsive;
-    this.numberSlider = numberSlider;
+    this.numSlider = numSlider;
 
     this.event = new Event("sliderChange");
     this.tabEvent = new Event("tabChange");
@@ -58,7 +58,7 @@ export class SliderCarousel {
   }
 
   addGloClass() {
-    this.wrap.classList.add(`glo-slider${this.numberSlider}`);
+    this.wrap.classList.add(`glo-slider${this.numSlider}`);
     this.main.classList.add(`glo-wrap`);
 
     for (const item of this.slides) {
@@ -67,22 +67,22 @@ export class SliderCarousel {
   }
 
   addStyle() {
-    this.style = document.getElementById(`sliderCarousel-style${this.numberSlider}`);
+    this.style = document.getElementById(`sliderCarousel-style${this.numSlider}`);
 
     if (!this.style) {
       this.style = document.createElement('style');
-      this.style.id = `sliderCarousel-style${this.numberSlider}`;
+      this.style.id = `sliderCarousel-style${this.numSlider}`;
     }
 
     this.style.textContent = `
     .glo-wrap {
       overflow: hidden;
     }
-    .glo-wrap .glo-slider${this.numberSlider} {
+    .glo-wrap .glo-slider${this.numSlider} {
       display: flex;
       ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : 'flex-wrap: nowrap;'}
     }
-    .glo-slider${this.numberSlider} .glo-slider__item {
+    .glo-slider${this.numSlider} .glo-slider__item {
       max-width: none;
       flex: 0 0 ${this.options.widthSlide}%;
       align-items: center;
@@ -200,7 +200,7 @@ export class SliderCarousel {
   }
 
   responsiveInit() {
-    const slidesToShowDefault = this.slidesToShow,
+    const slidesShowDefault = this.slidesShow,
       allResponse = this.responsive.map(item => item.breakpoint),
       maxResponse = Math.max(...allResponse);
 
@@ -210,14 +210,14 @@ export class SliderCarousel {
       if (widthWindow < maxResponse) {
         for (let i = 0; i < allResponse.length; i++) {
           if (widthWindow < allResponse[i]) {
-            this.slidesToShow = this.responsive[i].slideToShow;
-            this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+            this.slidesShow = this.responsive[i].slideToShow;
+            this.options.widthSlide = Math.floor(100 / this.slidesShow);
             this.addStyle();
           }
         }
       } else {
-        this.slidesToShow = slidesToShowDefault;
-        this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+        this.slidesShow = slidesShowDefault;
+        this.options.widthSlide = Math.floor(100 / this.slidesShow);
         this.addStyle();
       }
     }

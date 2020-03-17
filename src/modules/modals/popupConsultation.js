@@ -1,19 +1,12 @@
-const popupConsultation = () => {
-    const popupCons = document.querySelector('.popup-consultation');
+import {openPopup} from '../openPopups';
 
-    document.body.addEventListener('click', (event) => {
-        let target = event.target;
-        if(target.closest('.button_wide')){
-            popupCons.classList.add('popup_open');
-            document.body.style.overflow = 'hidden';
-        } else{
-            target = target.matches('.close');
-            if(target){
-                popupCons.classList.remove('popup_open');
-                document.body.style.overflow = 'visible';
-            }
-        }
-    });
+const popupConsultation = () => {
+    const popupCons = document.querySelector('.popup-consultation'),
+        wide = document.querySelectorAll('.button_wide');
+   
+    wide.forEach(item => {
+        item.addEventListener('click', openPopup.bind(null, popupCons))
+    })
 };
 
 export default popupConsultation;

@@ -1,4 +1,4 @@
-//import { open } from "../openHandler";
+import {openPopup} from '../openPopups';
 import { SliderCarousel, sliderCounter } from "../carousel";
 
 const transparencyPopup = document.querySelector('.popup-transparency'),
@@ -15,24 +15,12 @@ const popupOpenTransparency = () => {
     if (!target.matches('.transparency-item__img')) return;
   
     const item = target.parentNode;
-    const children = [...slider.children]
+    const child = [...slider.children]
   
-    doc.toSlide(children.indexOf(item));
+    doc.toSlide(child.indexOf(item));
     topical.innerText = doc.options.position + 1;
 
-    document.body.addEventListener('click', (event) => {
-        let target = event.target;
-        if(target.closest('.transparency-item__img')){
-            transparencyPopup.classList.add('popup_open');
-            document.body.style.overflow = 'hidden';
-        } else{
-            target = target.closest('.popup-dialog-transparency');
-            if(!target){
-                transparencyPopup.classList.remove('popup_open');
-                document.body.style.overflow = 'visible';
-            }
-        }
-    });
+    openPopup(transparencyPopup);
 };
 
 
@@ -46,8 +34,8 @@ const popupTransparency = () => {
     prev: '#transparency_left',
     next: '#transparency_right',
     
-    numberSlider: sliderCounter.count,
-    slidesToShow: 1,
+    numSlider: sliderCounter.count,
+    slidesShow: 1,
   });
   
   doc.init();
@@ -59,8 +47,8 @@ const popupTransparency = () => {
     prev: '#transparency-arrow_left',
     next: '#transparency-arrow_right',
     
-    numberSlider: sliderCounter.count,
-    slidesToShow: 1,
+    numSlider: sliderCounter.count,
+    slidesShow: 1,
   });
   
   docMobile.init();

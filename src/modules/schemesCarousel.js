@@ -1,4 +1,4 @@
-import  {SliderCarousel, sliderCounter } from "./carousel";
+import  {SliderCarousel, sliderCounter } from './carousel';
 
 const scheme = () => {
   const slider = new SliderCarousel({
@@ -11,8 +11,8 @@ const scheme = () => {
     prev: '#nav-arrow-scheme_left',
     next: '#nav-arrow-scheme_right',
   
-    numberSlider: sliderCounter.count,
-    slidesToShow: 1,
+    numSlider: sliderCounter.count,
+    slidesShow: 1,
   });
   
   slider.init();

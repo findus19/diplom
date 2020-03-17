@@ -6,12 +6,12 @@ const wrapper = document.querySelector('.formula-slider-wrap'),
 
 const slidesDefault = 3;
 
-const getSlidesToShow = () => {
+const getslidesShow = () => {
   return document.documentElement.clientWidth < 768 ? 1 : slidesDefault;
 }
 
-let slidesToShow = getSlidesToShow(),
-  responseCurrentSlider = getSlidesToShow() === 1 ? 1 : 2;
+let slidesShow = getslidesShow(),
+  responseCurrentSlider = getslidesShow() === 1 ? 1 : 2;
 
 const slideToRight = () => {
   const prev = slider.appendChild(slides[0]);
@@ -21,7 +21,7 @@ const slideToRight = () => {
   let lastSlide = slides[0],
     currentSlide = slides[1];
 
-  if (slidesToShow === slidesDefault) {
+  if (slidesShow === slidesDefault) {
     lastSlide = slides[1];
     currentSlide = slides[2];
   }
@@ -40,7 +40,7 @@ const slideToLeft = () => {
   let lastSlide = slides[1],
     currentSlide = slides[0];
 
-  if (slidesToShow === slidesDefault) {
+  if (slidesShow === slidesDefault) {
     currentSlide = slides[1];
     lastSlide = slides[2];
   }
@@ -55,7 +55,7 @@ const slideToLeft = () => {
 const responseInit = () => {
   insertSlideToStart();
 
-  if (slidesToShow === slidesDefault) {
+  if (slidesShow === slidesDefault) {
     insertSlideToStart();
   }
 
@@ -64,12 +64,12 @@ const responseInit = () => {
   let currentSlide = slides[1];
 
   for (const slide of slides) {
-    if (slidesToShow === 1) {
+    if (slidesShow === 1) {
       slide.classList.add('formula-one-slide');
     }
   }
 
-  if (slidesToShow === slidesDefault) {
+  if (slidesShow === slidesDefault) {
     currentSlide = slides[2];
   }
 
@@ -77,10 +77,10 @@ const responseInit = () => {
 };
 
 const resizeHandler = () => {
-  slidesToShow = getSlidesToShow();
+  slidesShow = getslidesShow();
 
   for (const slide of slides) {
-    if (slidesToShow === slidesDefault) {
+    if (slidesShow === slidesDefault) {
       slide.classList.remove('formula-one-slide');
     } else {
       slide.classList.add('formula-one-slide');

@@ -1,17 +1,16 @@
-import { SliderCarousel, sliderCounter } from "./carousel";
+import { SliderCarousel, sliderCounter } from './carousel';
 
-const headDate = document.querySelector('.popup-repair-types-content__head-date'),
-  list = document.querySelector('.nav-list-popup-repair'),
-  title = document.getElementById('switch-inner'),
-  tableOuter = document.querySelector('.popup-repair-types-content-table');
+const repairDate = document.querySelector('.popup-repair-types-content__head-date'),
+  listPopupRepair = document.querySelector('.nav-list-popup-repair'),
+  switchInner = document.getElementById('switch-inner'),
+  repairContentTable = document.querySelector('.popup-repair-types-content-table');
 
 const setDate = (date) => {
-  headDate.innerText = date;
+  repairDate.innerText = date;
 };
 
 const getTabs = (data) => {
   const tabs = [];
-
   data.forEach(tab => {
     tabs.push(tab.title);
   });
@@ -20,72 +19,69 @@ const getTabs = (data) => {
 };
 
 const setTabs = (tabs) => {
-  list.innerHTML = '';
-
+  listPopupRepair.innerHTML = '';
   for (const tab of tabs) {
-    list.insertAdjacentHTML('beforeend', `
+    listPopupRepair.insertAdjacentHTML('beforeend', `
       <button class="button_o popup-repair-types-nav__item">${tab}</button>
     `);
   }
 };
 
-const getPrices = (data) => {
-  let prices = '';
+const getPriceList = (data) => {
+  let costs = '';
   
-  for (const price of data.priceList) {
-    prices += `
+  for (const cost of data.priceList) {
+    costs += `
       <tr class="mobile-row showHide">
-        <td class="repair-types-name">${price.typeService}</td>
+        <td class="repair-types-name">${cost.typeService}</td>
         <td class="mobile-col-title tablet-hide desktop-hide">Ед.измерения</td>
         <td class="mobile-col-title tablet-hide desktop-hide">Цена за ед.</td>
-        <td class="repair-types-value">${price.units}</td>
-        <td class="repair-types-value">${price.cost} руб.</td>
+        <td class="repair-types-value">${cost.units}</td>
+        <td class="repair-types-value">${cost.cost} руб.</td>
       </tr>
     `;
   }
 
-  return prices;
+  return costs;
 };
 
-const setPrices = (data) => {
-  tableOuter.innerHTML = '';
+const setPriceList = (data) => {
+  repairContentTable.innerHTML = '';
 
   for (const item of data) {
-    tableOuter.insertAdjacentHTML('beforeend', `
+    repairContentTable.insertAdjacentHTML('beforeend', `
       <table class="popup-repair-types-content-table__list">
-        ${getPrices(item)}
+        ${getPriceList(item)}
       </table>
     `);
   }
 };
 
-const priceHandler = (data) => {
+const priceDoIt = (data) => {
   const date = data.shift().date;
   
   setDate(date);
   setTabs(getTabs(data));
-  setPrices(data);
+  setPriceList(data);
 
   const slider = new SliderCarousel({
     main: `.popup-repair-types-content-table-wrap`,
     wrap: `.popup-repair-types-content-table`,
   
     tabs: '.nav-list-popup-repair',
-    tabClass: 'popup-repair-types-nav__item',
+    classTab: 'popup-repair-types-nav__item',
   
-    numberSlider: sliderCounter.count,
-    slidesToShow: 1,
+    numSlider: sliderCounter.count,
+    slidesShow: 1,
   });
   
   slider.init();
 };
 
-const tabHandler = () => {
+const tabDoIt = () => {
   const target = event.target;
-
   if (!target.matches('button')) return;
-
-  title.innerText = target.innerText;
+  switchInner.innerText = target.innerText;
 }
 
 const services = () => {
@@ -94,16 +90,14 @@ const services = () => {
       if (response.status !== 200) {
         throw new Error(response.statusText);
       }
-
       return response.json();
     }, (error) => {
       messageStatus.src = messages.error;
       console.error(error);
     })
-    .then(priceHandler);
+    .then(priceDoIt);
     
-
-  list.addEventListener('click', tabHandler);
+  listPopupRepair.addEventListener('click', tabDoIt);
 };
 
 export default services;

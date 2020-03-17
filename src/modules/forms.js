@@ -1,4 +1,4 @@
-import {openPopupThank} from './modals/popupThank';
+import {openThanksPopup} from './modals/popupThank';
 const forms = document.querySelectorAll('.feedback__form, .feedback-block__form');
 
 const postData = (body) => {
@@ -11,7 +11,7 @@ const postData = (body) => {
     });
 }; 
 
-const handlerForm = (event) =>{
+const sendForm = (event) =>{
     event.preventDefault();
     const target = event.target;
     const check = target.querySelector('.checkbox__input');
@@ -32,7 +32,7 @@ const handlerForm = (event) =>{
           throw new Error(response.statusText);
         }
         console.log(321);
-        openPopupThank();
+        openThanksPopup();
   
       }, (error) => {
         console.log(error);
@@ -42,7 +42,7 @@ const handlerForm = (event) =>{
     }
 };
 
-const initForms = () => {
+const postForms = () => {
     forms.forEach(form => {
       const check = form.querySelector('.checkbox__input'),
         phone = form.querySelector('[name="phone"]');
@@ -50,8 +50,8 @@ const initForms = () => {
       check.removeAttribute('required');
       phone.required = true;
   
-      form.addEventListener('submit', handlerForm);
+      form.addEventListener('submit', sendForm);
     });
   };
   
-  export default initForms;
+  export default postForms;

@@ -1,4 +1,4 @@
-import {SliderCarousel, sliderCounter} from "./carousel";
+import {SliderCarousel, sliderCounter} from './carousel';
 
 const reviews = () => {
     const carousel = new SliderCarousel({
@@ -8,8 +8,8 @@ const reviews = () => {
         prev: '#reviews-arrow_left',
         next: '#reviews-arrow_right',
 
-        numberSlider: sliderCounter.count,
-        slidesToShow: 1,
+        numSlider: sliderCounter.count,
+        slidesShow: 1,
     });
 
     carousel.init();

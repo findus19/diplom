@@ -1,16 +1,9 @@
+import {openPopup} from '../openPopups';
 
-export const openPopupThank = () => {
-    const popupThank = document.querySelector('.popup-tnank');
-    document.body.addEventListener('click', (event) => {
-        let target = event.target;
-        popupThank.style.visibility = 'visible';
-        //document.body.style.overflow = 'hidden';
-        target = target.matches('.close');
-        if(target){
-            popupThank.style.visibility = 'hidden';
-            document.body.style.overflow = 'visible';
-        }
-    })
-};
+const popupThank = document.querySelector('.popup-thank');
 
-export default openPopupThank;
+export const openThanksPopup = openPopup.bind(null, popupThank);
+
+const thank = () => {};
+
+export default thank;

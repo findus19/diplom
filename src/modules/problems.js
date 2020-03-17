@@ -20,7 +20,6 @@ const tooltipOut = (tooltip) => {
 
 const tooltipHandler = (event) => {
   const target = event.target;
-  console.log(123);
   if (!target.matches('.svg-wrap')) {return};
   
   const tooltip = target.previousElementSibling.previousElementSibling;

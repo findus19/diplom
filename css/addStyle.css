@@ -1,17 +1,5 @@
-.modal_open {
+.open_popup {
   visibility: visible;
-}
-.popup-transparency-slider {
-  overflow: unset;
-}
-.scheme-slider {
-  overflow: unset;
-}
-.popup-repair-types-content-table {
-  overflow-x: hidden;
-}
-.nav-list {
-  transition: none;
 }
 .formula-item-popup {
   transition: opacity .5s;
@@ -70,7 +58,7 @@
 .formula-prev-slide {
   margin-left: -33%;
 }
-.formula-one-slide .formula-prev-slide {
+.formula-one-slide.formula-prev-slide {
   margin-left: -100%;
 }
 .partners .wrapper {
@@ -102,68 +90,15 @@
       top: 50%;
   }
 }
-.problems-item-popup {
-  transition: opacity .5s;
-  will-change: opacity;
+.popup-transparency-slider {
+  overflow: unset;
 }
-.problems-item__icon:hover .problems-item-popup {
-  visibility: visible;
-  opacity: 1;
+.scheme-slider {
+  overflow: unset;
 }
-.problems-item_cover {
-  z-index: 1;
+.popup-repair-types-content-table {
+  overflow-x: hidden;
 }
-.problems-item_cover {
-  z-index: 1;
+.nav-list {
+  transition: none;
 }
-.problems-slider-wrap {
-  position: relative;
-}
-.problems-slider {
-  overflow: hidden;
-  display: flex; 
-  margin-top: 0;
-}
-.problems-slider__slide {
-  width: 33%;
-  transition: margin .5s;
-  will-change: margin;
-  margin-left: 0;
-  flex-shrink: 0;
-}
-.problems-one-slide {
-  width: 100%;
-}
-.problems-slider_active {
-  opacity: 1;
-}
-.problems-slider_active .problems-item__icon-inner {
-  background: -webkit-gradient(linear,left top,right top,from(#f48922),to(#ffb015));
-  background: linear-gradient(90deg,#f48922 0,#ffb015 100%);
-  color: #ffffff;
-}
-.problems-slider_active .problems-item-popup {
-  visibility: visible;
-  opacity: 1;
-}
-.problems-item__icon:hover .problems-item__icon-inner {
-  opacity: 1;
-}
-.problems-item__icon:hover .problems-item__icon-inner-text {
-  color: #ffffff;
-}
-.problems-prev-slide {
-  margin-left: -33%;
-}
-.problems-one-slide .problems-prev-slide {
-  margin-left: -100%;
-}
-.popup_open {
-  visibility: visible;
-}
-/* .popup-arrow_transparency {
-  visibility: visible;
-} */
-/* #transparency_right {
-  visibility: visible;
-} */

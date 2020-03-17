@@ -1,19 +1,12 @@
-const popupPrivacy = () => {
-    const popupPrivacy = document.querySelector('.popup-privacy');
+import {openPopup} from '../openPopups';
 
-    document.body.addEventListener('click', (event) => {
-        let target = event.target;
-        if(target.closest('.link-privacy')){
-            popupPrivacy.classList.add('popup_open');
-            document.body.style.overflow = 'hidden';
-        } else{
-            target = target.closest('.popup-dialog-privacy');
-            if(!target){
-                popupPrivacy.classList.remove('popup_open');
-                document.body.style.overflow = 'visible';
-            }
-        }
-    });
+const popupPrivacy = () => {
+    const popupPrivacy = document.querySelector('.popup-privacy'),
+        link = document.querySelectorAll('.link-privacy');
+
+    link.forEach(item => {
+        item.addEventListener('click', openPopup.bind(null, popupPrivacy))
+    })
 };
 
 export default popupPrivacy;
