@@ -13,12 +13,11 @@ import formulaSlider from './modules/formulaSlider';
 import partners from './modules/partnersCarousel';
 import reviews from './modules/reviewsCarousel';
 import popupConsultation from './modules/modals/popupConsultation';
-import tnank from './modules/modals/popupThank';
 import scheme from './modules/schemesCarousel';
 import tooltipsProblems from './modules/problems';
 import accordion from './modules/accordion';
 import popupTransparency from './modules/modals/popupTransparency';
-import services from './modules/services';
+import services from './modules/modals/popupServices';
 
 openPhone();
 
@@ -45,8 +44,6 @@ partners();
 reviews();
 
 popupConsultation();
-
-//tnank();
 
 scheme();
 

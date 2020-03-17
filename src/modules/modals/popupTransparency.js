@@ -15,9 +15,9 @@ const popupOpenTransparency = () => {
     if (!target.matches('.transparency-item__img')) return;
   
     const item = target.parentNode;
-    const child = [...slider.children]
+    const children = [...slider.children]
   
-    doc.toSlide(child.indexOf(item));
+    doc.toSlide(children.indexOf(item));
     topical.innerText = doc.options.position + 1;
 
     openPopup(transparencyPopup);

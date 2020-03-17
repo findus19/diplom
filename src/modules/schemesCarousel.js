@@ -7,6 +7,16 @@ const scheme = () => {
   
     tabs: '#scheme-list',
     classTab: 'scheme-nav__item',
+  
+    numSlider: sliderCounter.count,
+    slidesShow: 1,
+  });
+
+  slider.init();
+
+ /*  const sliderNav = new SliderCarousel({
+    main: `#scheme-list`,
+    wrap: `.scheme-nav__item`,
 
     prev: '#nav-arrow-scheme_left',
     next: '#nav-arrow-scheme_right',
@@ -15,7 +25,7 @@ const scheme = () => {
     slidesShow: 1,
   });
   
-  slider.init();
+  sliderNav.init(); */
   
   slider.main.addEventListener('tabChange', () => {
     const children = slider.main.querySelectorAll('.scheme-description-block');

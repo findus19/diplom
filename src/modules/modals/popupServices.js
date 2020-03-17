@@ -1,4 +1,4 @@
-import { SliderCarousel, sliderCounter } from './carousel';
+import { SliderCarousel, sliderCounter } from '../carousel';
 
 const repairDate = document.querySelector('.popup-repair-types-content__head-date'),
   listPopupRepair = document.querySelector('.nav-list-popup-repair'),

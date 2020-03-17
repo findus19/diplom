@@ -38,6 +38,10 @@ export class SliderCarousel {
     this.tabs = document.querySelector(tabs);
     this.classTab = classTab;
     this.moveSlide = moveSlide.toUpperCase();
+    this.hideArrow = this.hideArrow;
+    this.backcall = {},
+    this.backcall.prev = {},
+    this.backcall.next = {};
   }
 
   init() {
@@ -54,7 +58,7 @@ export class SliderCarousel {
       this.checkSlider();
     }
 
-    this.responsiveInit();
+    this.likeLook();
   }
 
   addGloClass() {
@@ -96,11 +100,6 @@ export class SliderCarousel {
     document.head.appendChild(this.style);
   }
 
-  checkSlider() {
-    this.prev.addEventListener('click', this.prevSlider.bind(this));
-    this.next.addEventListener('click', this.nextSlider.bind(this));
-  }
-
   removeStyle() {
     this.style.remove();
     this.style = null;
@@ -125,11 +124,28 @@ export class SliderCarousel {
     });
   }
 
+  checkSlider() {
+    this.backcall.prev = this.prevSlider.bind(this);
+    this.backcall.next = this.nextSlider.bind(this);
+    this.prev.addEventListener('click', this.backcall.prev);
+    this.next.addEventListener('click', this.backcall.next);
+  }
+
+  removeCheckSlider() {
+    this.prev.removeEventListener('click', this.backcall.prev);
+    this.next.removeEventListener('click', this.backcall.next);
+  }  
+
   toSlide(position) {
     this.options.position = position;
-    this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
+    if (this.moveSlide === 'Y') {
+      this.first.style.marginTop = `calc(${this.options.position} * -100%)`;
+    } else {
+      this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
+    }
   
     this.main.dispatchEvent(this.tabEvent);
+    this.wrap.dispatchEvent(this.tabEvent);
   }
 
   prevSlider() {
@@ -140,10 +156,24 @@ export class SliderCarousel {
         this.options.position = this.options.maxPosition;
       }
 
-      this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
+      if (this.moveSlide === 'Y') {
+        this.first.style.marginTop = `-${this.options.position * this.options.widthSlide}%`;
+      } else {
+        this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
+      }
+    }
+
+    if (!this.options.infinity && this.hideArrow) {
+      if (this.options.position === 0 && this.options.position !== this.options.maxPosition) {
+        this.prev.style.display = 'none';
+      } else {
+        this.prev.style.display = 'flex';
+        this.next.style.display = 'flex';
+      }
     }
 
     this.main.dispatchEvent(this.event);
+    this.wrap.dispatchEvent(this.event);
   }
 
   nextSlider() {
@@ -154,10 +184,24 @@ export class SliderCarousel {
         this.options.position = 0;
       }
 
-      this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
+      if (this.moveSlide === 'Y') {
+        this.first.style.marginTop = `-${this.options.position * this.options.widthSlide}%`;
+      } else {
+        this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
+      }
+    }
+
+    if (!this.options.infinity && this.hideArrow) {
+      if (this.options.position !== 0 && this.options.position === this.options.maxPosition) {
+        this.next.style.display = 'none';
+      } else {
+        this.next.style.display = 'flex';
+        this.prev.style.display = 'flex';
+      }
     }
 
     this.main.dispatchEvent(this.event);
+    this.wrap.dispatchEvent(this.event);
   }
 
   addArrow() {
@@ -199,7 +243,7 @@ export class SliderCarousel {
     document.head.appendChild(style);
   }
 
-  responsiveInit() {
+  likeLook() {
     const slidesShowDefault = this.slidesShow,
       allResponse = this.responsive.map(item => item.breakpoint),
       maxResponse = Math.max(...allResponse);
@@ -223,7 +267,6 @@ export class SliderCarousel {
     }
 
     checkResponse();
-
     window.addEventListener('resize', checkResponse);
   }
 }
@@ -232,7 +275,6 @@ export const sliderCounter = {
   num: 0,
   get count() {
     this.num++;
-
     return this.num;
   }
 };
