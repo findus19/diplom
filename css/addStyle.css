@@ -61,6 +61,37 @@
 .formula-one-slide.formula-prev-slide {
   margin-left: -100%;
 }
+@media screen and (max-width: 1024px) {
+  .formula-slider{
+    padding-top: 100px;
+    padding-bottom: 280px;
+    min-height: auto;
+    margin: 15px auto;
+  }
+  .formula-slider-wrap .slider-arrow {
+    margin-top: -70px;
+  }
+  #formula-arrow_right {
+    top: 37%;
+  }
+  #formula-arrow_left {
+    top: 37%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .formula-slider{
+    padding-top: 70px;
+    padding-bottom: 170px;
+    min-height: auto;
+    margin: 15px auto;
+  }
+  #formula-arrow_right {
+    top: 47%;
+  }
+  #formula-arrow_left {
+    top: 47%;
+  }
+}
 .partners .wrapper {
   margin-top: 80px;
 }
@@ -101,4 +132,92 @@
 }
 .nav-list {
   transition: none;
+}
+.repair-types-slider-wrap.glo-wrap {
+  overflow: visible;
+}
+.glo-wrap .glo-wrap.repair-types-slider {
+  display: block;
+}
+@media (max-width: 1024px) {
+  .repair-types-nav__item svg {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    align-items: center;
+  } 
+  .nav-list-repair {
+    min-width: auto;
+  }
+}
+.portfolio-slider {
+  width: auto;
+}
+.portfolio-slider__slide {
+  max-height: unset;
+}
+@media (min-width: 901px) {
+  .portfolio-slider-wrap.glo-wrap {
+    overflow: visible;
+  }
+}
+@media (max-width: 900px) {
+  #portfolio-arrow_right {
+    right: 10px;
+  }
+  #portfolio-arrow_left {
+    left: 10px;
+  }
+  .portfolio-slider-wrap {
+    max-width: unset;
+  }
+  
+}
+@media (min-width: 1025px) {
+  .glo-wrap.portfolio-slider-wrap .desktop-hide {
+      display: none;
+  }
+}
+@media (max-width: 1024px) and (min-width: 576px) {
+  .glo-wrap.portfolio-slider-wrap .tablet-hide {
+    display: none;
+  }
+}
+@media (max-width: 1024px) and (min-width: 900px) {
+  #portfolio-arrow_right {
+    right: -50px;
+  }
+  #portfolio-arrow_left {
+    left: -50px;
+  }
+}
+@media (max-width: 1024px){
+
+}
+
+@media (max-width: 575px) {
+  .glo-wrap .portfolio-slider.mobile-hide {
+    display: none;
+  }
+  .portfolio-slider-wrap.glo-wrap {
+    overflow: visible;
+  }
+  #portfolio-counter {
+    z-index: 2;
+  }
+  .portfolio-slider__slide-frame:before {
+    z-index: -1;
+  }
+  .portfolio-slider__slide-frame-img {
+    max-width: 100%;
+  }
+  #portfolio-counter {
+    margin-left: -19px;
+  }
+  #portfolio-arrow_left, #portfolio-arrow_right {
+    display: none;
+  }
+}
+.popup-portfolio-text.active {
+  display: block;
 }

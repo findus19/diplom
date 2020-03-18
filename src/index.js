@@ -8,7 +8,7 @@ import scroll from './modules/scroll';
 import maskPhone from './modules/maskPhone';
 import popupRepairTypes from './modules/modals/popupRepairTypes';
 import popupPrivacy from './modules/modals/popupPrivacy';
-import tooltips from './modules/formula';
+import tooltipsFormula from './modules/formula';
 import formulaSlider from './modules/formulaSlider';
 import partners from './modules/partnersCarousel';
 import reviews from './modules/reviewsCarousel';
@@ -18,6 +18,7 @@ import tooltipsProblems from './modules/problems';
 import accordion from './modules/accordion';
 import popupTransparency from './modules/modals/popupTransparency';
 import services from './modules/modals/popupServices';
+import portfolio from './modules/modals/popupPortfolio';
 
 openPhone();
 
@@ -35,7 +36,7 @@ popupRepairTypes();
 
 popupPrivacy();
 
-tooltips();
+tooltipsFormula();
 
 formulaSlider();
 
@@ -54,6 +55,8 @@ accordion();
 popupTransparency();
 
 services();
+
+portfolio();
 
 
 

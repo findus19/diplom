@@ -32,9 +32,9 @@ const tooltipHandler = (event) => {
   }
 };
 
-const tooltips = () => {
+const tooltipsFormula = () => {
   wrapper.addEventListener('mouseover', tooltipHandler);
   wrapper.addEventListener('mouseout', tooltipHandler);
 };
 
-export default tooltips;
+export default tooltipsFormula;

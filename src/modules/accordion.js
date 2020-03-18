@@ -3,9 +3,9 @@ const accordion = () => {
 
     accord.addEventListener('click', () => {
         const target = event.target;
-        if (!target.matches('.title_block')) return;
-
         const current = accord.querySelector('.msg-active');
+        
+        if (!target.matches('.title_block')) return;
         
         if (!target.classList.contains('msg-active')) {
             target.classList.add('msg-active');

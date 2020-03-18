@@ -4,14 +4,15 @@ export class SliderCarousel {
     wrap,
     next,
     prev,
+    tabs,
+    hideArrow = false,
+    classTab = 'glo-tab',
+    moveSlide = 'x',
     infinity = false,
     position = 0,
     slidesShow = 3,
     responsive = [],
-    numSlider = 1,
-    tabs,
-    classTab = 'glo__tab',
-    moveSlide = 'x'
+    numSlider = 1
   }) {
     if (!main && !wrap) {
       console.warn('slider-carousel: Необходимо 2 свойства, "main" и "wrap"!')
@@ -38,9 +39,9 @@ export class SliderCarousel {
     this.tabs = document.querySelector(tabs);
     this.classTab = classTab;
     this.moveSlide = moveSlide.toUpperCase();
-    this.hideArrow = this.hideArrow;
-    this.backcall = {},
-    this.backcall.prev = {},
+    this.hideArrow = hideArrow;
+    this.backcall = {};
+    this.backcall.prev = {};
     this.backcall.next = {};
   }
 
@@ -58,7 +59,7 @@ export class SliderCarousel {
       this.checkSlider();
     }
 
-    this.likeLook();
+    this.lookLike();
   }
 
   addGloClass() {
@@ -79,22 +80,22 @@ export class SliderCarousel {
     }
 
     this.style.textContent = `
-    .glo-wrap {
-      overflow: hidden;
-    }
-    .glo-wrap .glo-slider${this.numSlider} {
-      display: flex;
-      ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : 'flex-wrap: nowrap;'}
-    }
-    .glo-slider${this.numSlider} .glo-slider__item {
-      max-width: none;
-      flex: 0 0 ${this.options.widthSlide}%;
-      align-items: center;
-      justify-content: center;
-      margin: auto 0;
-      transition: margin-left .5s;
-      will-change: margin-left;
-    }
+      .glo-wrap {
+        overflow: hidden;
+      }
+      .glo-wrap .glo-slider${this.numSlider} {
+        display: flex;
+        ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : 'flex-wrap: nowrap;'}
+      }
+      .glo-slider${this.numSlider} .glo-slider__item {
+        max-width: none;
+        flex: 0 0 ${this.options.widthSlide}%;
+        align-items: center;
+        margin: auto 0;
+        transition: margin .5s; 
+        will-change: margin;
+        margin-top: 0;
+      }
     `;
 
     document.head.appendChild(this.style);
@@ -113,9 +114,10 @@ export class SliderCarousel {
 
       if (!target.matches(`.${this.classTab}`)) return;
 
-      const topical = document.querySelector(`.${this.classTab}.active`);
-      if (topical) {
-        topical.classList.remove('active');
+      const current = document.querySelector(`.${this.classTab}.active`);
+
+      if (current) {
+        current.classList.remove('active');
       }
 
       target.classList.add('active');
@@ -134,16 +136,17 @@ export class SliderCarousel {
   removeCheckSlider() {
     this.prev.removeEventListener('click', this.backcall.prev);
     this.next.removeEventListener('click', this.backcall.next);
-  }  
+  }
 
   toSlide(position) {
     this.options.position = position;
+
     if (this.moveSlide === 'Y') {
       this.first.style.marginTop = `calc(${this.options.position} * -100%)`;
     } else {
       this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
     }
-  
+
     this.main.dispatchEvent(this.tabEvent);
     this.wrap.dispatchEvent(this.tabEvent);
   }
@@ -155,7 +158,7 @@ export class SliderCarousel {
       if (this.options.position < 0) {
         this.options.position = this.options.maxPosition;
       }
-
+      
       if (this.moveSlide === 'Y') {
         this.first.style.marginTop = `-${this.options.position * this.options.widthSlide}%`;
       } else {
@@ -175,7 +178,7 @@ export class SliderCarousel {
     this.main.dispatchEvent(this.event);
     this.wrap.dispatchEvent(this.event);
   }
-
+  
   nextSlider() {
     if (this.options.infinity || this.options.position < this.options.maxPosition) {
       ++this.options.position;
@@ -183,7 +186,7 @@ export class SliderCarousel {
       if (this.options.position > this.options.maxPosition) {
         this.options.position = 0;
       }
-
+      
       if (this.moveSlide === 'Y') {
         this.first.style.marginTop = `-${this.options.position * this.options.widthSlide}%`;
       } else {
@@ -192,7 +195,7 @@ export class SliderCarousel {
     }
 
     if (!this.options.infinity && this.hideArrow) {
-      if (this.options.position !== 0 && this.options.position === this.options.maxPosition) {
+      if (this.options.position === this.options.maxPosition && this.options.position !== 0) {
         this.next.style.display = 'none';
       } else {
         this.next.style.display = 'flex';
@@ -243,7 +246,7 @@ export class SliderCarousel {
     document.head.appendChild(style);
   }
 
-  likeLook() {
+  lookLike() {
     const slidesShowDefault = this.slidesShow,
       allResponse = this.responsive.map(item => item.breakpoint),
       maxResponse = Math.max(...allResponse);
@@ -267,6 +270,7 @@ export class SliderCarousel {
     }
 
     checkResponse();
+
     window.addEventListener('resize', checkResponse);
   }
 }
