@@ -1,5 +1,5 @@
 import {SliderCarousel, sliderCounter} from './carousel';
-
+const design = () => {
     const designsSlider = document.querySelector('.designs-slider'),
         designsList = document.getElementById('designs-list'),
         contentCurrent = document.querySelector('#designs-counter .slider-counter-content__current'),
@@ -38,7 +38,7 @@ import {SliderCarousel, sliderCounter} from './carousel';
         contentCurrent.innerText = slider.options.position + 1;
         contentTotal.innerText = slider.slides.length;
     };
-    const design = () => {
+    
     const children = designsSlider.children;
   
     for (const child of children) {
