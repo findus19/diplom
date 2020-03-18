@@ -146,7 +146,7 @@
     margin: 0 auto;
     align-items: center;
   } 
-  .nav-list-repair #designs-list {
+  .nav-list-repair, #designs-list {
     min-width: auto;
   }
 }

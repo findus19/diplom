@@ -14,7 +14,7 @@ import {SliderCarousel, sliderCounter} from './carousel';
     const tabOpen = (event) => {
         const {target} = event;
         if (!target.matches('.designs-nav__item')) return;
-        console.log(windowSlider.tabs)
+
         const children = [...tabsSlider.tabs.children],
             slider = windowSlider[children.indexOf(target)],
             designListChildren = [...designsList.children],
