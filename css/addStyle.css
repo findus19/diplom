@@ -1,11 +1,16 @@
 .open_popup {
   visibility: visible;
 }
-.formula-item-popup {
+.glo-wrap {
+  overflow: hidden;
+}
+.formula-item-popup,
+.problems-item-popup {
   transition: opacity .5s;
   will-change: opacity;
 }
-.formula-item__icon:hover .formula-item-popup {
+.formula-item__icon:hover .formula-item-popup,
+.problems-item__icon:hover .problems-item-popup {
   visibility: visible;
   opacity: 1;
 }
@@ -16,81 +21,62 @@
 .tooltip_reverse:before {
   transform: rotate(180deg);
 }
-.formula-item_cover {
+.formula-item_cover,
+.problems-item_cover {
   z-index: 1;
 }
-.formula-slider-wrap {
+.formula-slider-wrap,
+.problems-slider-wrap {
   position: relative;
 }
-.formula-slider {
+.formula-slider,
+.problems-slider {
   overflow: hidden;
   display: flex; 
   margin-top: 0;
 }
-.formula-slider__slide {
+.formula-slider__slide,
+.problems-slider__slide {
   width: 33%;
   transition: margin .5s;
   will-change: margin;
   margin-left: 0;
   flex-shrink: 0;
 }
-.formula-one-slide {
+.formula-one-slide,
+.problems-one-slide {
   width: 100%;
 }
-.formula-slider_active {
+.formula-slider_active,
+.problems-slider__slide.active-item {
   opacity: 1;
 }
-.formula-slider_active .formula-item__icon-inner {
+.formula-slider_active .formula-item__icon-inner,
+.active-item .problems-item__icon-inner {
   background: -webkit-gradient(linear,left top,right top,from(#f48922),to(#ffb015));
   background: linear-gradient(90deg,#f48922 0,#ffb015 100%);
   color: #ffffff;
 }
-.formula-slider_active .formula-item-popup  {
+.formula-slider_active .formula-item-popup,
+.active-item .problems-item-popup {
   visibility: visible;
   opacity: 1;
 }
-.formula-item__icon:hover .formula-item__icon-inner {
+.formula-item__icon:hover .formula-item__icon-inner,
+.problems-item__icon:hover .problems-item__icon-inner {
   opacity: 1;
 }
-.formula-item__icon:hover .formula-item__icon-inner-text {
+.formula-item__icon:hover .formula-item__icon-inner-text,
+.problems-item__icon:hover .problems-item__icon-inner-text {
   color: #ffffff;
 }
-.formula-prev-slide {
+.formula-prev-slide,
+.problems-prev-slide {
   margin-left: -33%;
 }
-.formula-one-slide.formula-prev-slide {
+.formula-one-slide.formula-prev-slide,
+.problems-one-slide.problems-prev-slide {
   margin-left: -100%;
-}
-@media screen and (max-width: 1024px) {
-  .formula-slider{
-    padding-top: 100px;
-    padding-bottom: 280px;
-    min-height: auto;
-    margin: 15px auto;
-  }
-  .formula-slider-wrap .slider-arrow {
-    margin-top: -70px;
-  }
-  #formula-arrow_right {
-    top: 37%;
-  }
-  #formula-arrow_left {
-    top: 37%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .formula-slider{
-    padding-top: 70px;
-    padding-bottom: 170px;
-    min-height: auto;
-    margin: 15px auto;
-  }
-  #formula-arrow_right {
-    top: 47%;
-  }
-  #formula-arrow_left {
-    top: 47%;
-  }
 }
 .partners .wrapper {
   margin-top: 80px;
@@ -127,12 +113,39 @@
 .scheme-slider {
   overflow: unset;
 }
+.msg {
+  transition: max-height .5s;
+  will-change: transition;
+}
+.msg-active ~ .msg {
+  max-height: 575px;
+}
 .popup-repair-types-content-table {
   overflow-x: hidden;
 }
 .nav-list {
   transition: none;
 }
+
+@media screen and (max-width: 1091px) {
+  .formula-slider {
+    padding: 150px 0 300px;
+    min-height: unset;
+  }
+  .formula-slider-wrap .slider-arrow {
+    margin-top: -62px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .formula-slider {
+    padding: 85px 0 280px;
+    min-height: unset;
+  }
+  .problems-item {
+    max-width: unset;
+  }
+}
+
 .repair-types-slider-wrap.glo-wrap {
   overflow: visible;
 }
@@ -140,14 +153,20 @@
   display: block;
 }
 @media (max-width: 1024px) {
-  .repair-types-nav__item svg .designs-nav__item svg{
+  .nav-list-repair,
+  #designs-list {
+    min-width: unset;
+  }
+  .repair-types-nav__item svg,
+  .designs-nav__item svg {
     left: 0;
     right: 0;
     margin: 0 auto;
-    align-items: center;
   } 
-  .nav-list-repair, #designs-list {
-    min-width: auto;
+}
+@media (min-width: 901px) {
+  .portfolio-slider-wrap.glo-wrap {
+    overflow: visible;
   }
 }
 .portfolio-slider {
@@ -201,6 +220,9 @@
   #portfolio-counter {
     z-index: 2;
   }
+  .slider-counter-responsive{
+    bottom: 1px;
+  }
   .portfolio-slider__slide-frame:before {
     z-index: -1;
   }
@@ -217,95 +239,6 @@
 .popup-portfolio-text.active {
   display: flex;
   align-items: center;
-}
-
-.problems-item_cover {
-  z-index: 1;
-}
-.problems-item-popup {
-  transition: opacity .5s;
-  will-change: opacity;
-}
-.problems-item__icon:hover .problems-item-popup {
-  visibility: visible;
-  opacity: 1;
-}
-.problems-slider-wrap {
-  position: relative;
-}
-.problems-slider {
-  overflow: hidden;
-  display: flex; 
-  margin-top: 0;
-}
-.problems-slider__slide {
-  width: 33%;
-  transition: margin .5s;
-  will-change: margin;
-  margin-left: 0;
-  flex-shrink: 0;
-}
-.problems-one-slide {
-  width: 100%;
-}
-.problems-slider_active {
-  opacity: 1;
-}
-.problems-slider_active .problems-item__icon-inner {
-  background: -webkit-gradient(linear,left top,right top,from(#f48922),to(#ffb015));
-  background: linear-gradient(90deg,#f48922 0,#ffb015 100%);
-  
-}
-.problems-item__icon:hover .problems-item__icon-inner .swg-wrap {
-  color: #ffffff;
-}
-.swg-wrap {
-  color: #ffffff;
-}
-.problems-slider_active .problems-item-popup  {
-  visibility: visible;
-  opacity: 1;
-}
-.problems-item__icon:hover .problems-item__icon-inner {
-  opacity: 1;
-}
-.problems-prev-slide {
-  margin-left: -33%;
-}
-.problems-one-slide.problems-prev-slide {
-  margin-left: -100%;
-}
-
-@media screen and (max-width: 1024px) {
-  .problems-slider{
-    padding-top: 100px;
-    padding-bottom: 280px;
-    min-height: auto;
-    margin: 15px auto;
-  }
-  .problems-slider-wrap .slider-arrow {
-    margin-top: -70px;
-  }
-  #problems-arrow_right {
-    top: 37%;
-  }
-  #problems-arrow_left {
-    top: 37%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .problems-slider{
-    padding-top: 70px;
-    padding-bottom: 170px;
-    min-height: auto;
-    margin: 15px auto;
-  }
-  #problems-arrow_right {
-    top: 47%;
-  }
-  #problems-arrow_left {
-    top: 47%;
-  }
 }
 .glo-wrap.designs-slider-wrap .designs-slider {
   display: block;

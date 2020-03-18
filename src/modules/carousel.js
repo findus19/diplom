@@ -81,9 +81,6 @@ export class SliderCarousel {
     }
 
     this.style.textContent = `
-      .glo-wrap {
-        overflow: hidden;
-      }
       .glo-wrap .glo-slider${this.numSlider} {
         display: flex;
         ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : 'flex-wrap: nowrap;'}

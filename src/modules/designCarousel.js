@@ -116,13 +116,13 @@ const design = () => {
             }
         } else if (document.documentElement.clientWidth > 1024 && mediaSlider.style) {
             mediaSlider.removeStyle();
-            tab.children[0].style.marginLeft = 0;
+            designsList.children[0].style.marginLeft = 0;
         };
     }
 
     tabDoIt();
 
-    tabsSlider.wrap.addEventListener('responseEventAfter', tabDoIt);
+    mediaSlider.wrap.addEventListener('eventAfter', tabDoIt);
 
     const paginationOpen = () => {
         let {target} = event;
