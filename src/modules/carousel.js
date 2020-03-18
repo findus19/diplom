@@ -6,13 +6,13 @@ export class SliderCarousel {
     prev,
     tabs,
     hideArrow = false,
-    classTab = 'glo-tab',
-    moveSlide = 'x',
     infinity = false,
     position = 0,
     slidesShow = 3,
     responsive = [],
-    numSlider = 1
+    numSlider = 1,
+    classTab = 'glo-tab',
+    moveSlide = 'x'
   }) {
     if (!main && !wrap) {
       console.warn('slider-carousel: Необходимо 2 свойства, "main" и "wrap"!')
@@ -34,8 +34,9 @@ export class SliderCarousel {
     this.responsive = responsive;
     this.numSlider = numSlider;
 
-    this.event = new Event("sliderChange");
-    this.tabEvent = new Event("tabChange");
+    this.event = new Event('sliderChange');
+    this.tabEvent = new Event('tabChange');
+    this.eventAfter = new Event('eventAfter')
     this.tabs = document.querySelector(tabs);
     this.classTab = classTab;
     this.moveSlide = moveSlide.toUpperCase();
@@ -87,14 +88,16 @@ export class SliderCarousel {
         display: flex;
         ${this.moveSlide === 'Y' ? 'flex-wrap: wrap;' : 'flex-wrap: nowrap;'}
       }
-      .glo-slider${this.numSlider} .glo-slider__item {
+      .glo-slider${this.numSlider} > .glo-slider__item {
         max-width: none;
         flex: 0 0 ${this.options.widthSlide}%;
         align-items: center;
         margin: auto 0;
-        transition: margin .5s; 
-        will-change: margin;
-        margin-top: 0;
+        transition: margin-left .5s, top .5s; 
+        will-change: margin-left, top;
+        position: relative;
+        top: 0;
+        height: 100%;
       }
     `;
 
@@ -142,11 +145,12 @@ export class SliderCarousel {
     this.options.position = position;
 
     if (this.moveSlide === 'Y') {
-      this.first.style.marginTop = `calc(${this.options.position} * -100%)`;
+      for (const slide of this.slides) {
+        slide.style.top = `-${this.options.position * this.options.widthSlide}%`;
+      }
     } else {
       this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
     }
-
     this.main.dispatchEvent(this.tabEvent);
     this.wrap.dispatchEvent(this.tabEvent);
   }
@@ -159,11 +163,7 @@ export class SliderCarousel {
         this.options.position = this.options.maxPosition;
       }
       
-      if (this.moveSlide === 'Y') {
-        this.first.style.marginTop = `-${this.options.position * this.options.widthSlide}%`;
-      } else {
-        this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
-      }
+      this.toSlide(this.options.position);
     }
 
     if (!this.options.infinity && this.hideArrow) {
@@ -187,11 +187,7 @@ export class SliderCarousel {
         this.options.position = 0;
       }
       
-      if (this.moveSlide === 'Y') {
-        this.first.style.marginTop = `-${this.options.position * this.options.widthSlide}%`;
-      } else {
-        this.first.style.marginLeft = `-${this.options.position * this.options.widthSlide}%`;
-      }
+      this.toSlide(this.options.position);
     }
 
     if (!this.options.infinity && this.hideArrow) {
@@ -267,6 +263,7 @@ export class SliderCarousel {
         this.options.widthSlide = Math.floor(100 / this.slidesShow);
         this.addStyle();
       }
+      this.wrap.dispatchEvent(this.eventAfter);
     }
 
     checkResponse();

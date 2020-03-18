@@ -15,6 +15,7 @@ import reviews from './modules/reviewsCarousel';
 import popupConsultation from './modules/modals/popupConsultation';
 import scheme from './modules/schemesCarousel';
 import tooltipsProblems from './modules/problems';
+import problemsSlider from './modules/problemsSlider';
 import accordion from './modules/accordion';
 import popupTransparency from './modules/modals/popupTransparency';
 import services from './modules/modals/popupServices';
@@ -50,6 +51,8 @@ popupConsultation();
 scheme();
 
 tooltipsProblems();
+
+problemsSlider();
 
 accordion();
 

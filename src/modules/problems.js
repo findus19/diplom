@@ -2,25 +2,25 @@ const wrapper = document.querySelector('.problems .wrapper_middle');
 
 const tooltipOver = (tooltip) => {
   const clientTopBegin = 0;
-  c
+  
   if (tooltip.getBoundingClientRect().y < clientTopBegin) {
-    const formulaItem = tooltip.closest('.problems-item');
-
+    const problemsItem = tooltip.closest('.problems-item');
+    
     tooltip.classList.add('tooltip_reverse');
-    formulaItem.classList.add('problems-item_cover');
+    problemsItem.classList.add('problems-item_cover');
   }
 };
 
 const tooltipOut = (tooltip) => {
-  const formulaItem = tooltip.closest('.problems-item');
+  const problemsItem = tooltip.closest('.problems-item');
   
   tooltip.classList.remove('tooltip_reverse');
-  formulaItem.classList.remove('problems-item_cover');
+  problemsItem.classList.remove('problems-item_cover');
 };
 
 const tooltipTamer = (event) => {
   const target = event.target;
-  if (!target.matches('.swg-wrap')) {return};
+  if (!target.matches('.problems-item__icon-inner')) {return};
   
   const tooltip = target.previousElementSibling.previousElementSibling;
   console.log(tooltip);
