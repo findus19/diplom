@@ -19,6 +19,7 @@ import accordion from './modules/accordion';
 import popupTransparency from './modules/modals/popupTransparency';
 import services from './modules/modals/popupServices';
 import portfolio from './modules/modals/popupPortfolio';
+import design from './modules/designCarousel';
 
 openPhone();
 
@@ -57,6 +58,8 @@ popupTransparency();
 services();
 
 portfolio();
+
+design();
 
 
 

@@ -2,7 +2,6 @@ const wrapper = document.querySelector('.formula .wrapper_small');
 
 const tooltipOver = (tooltip) => {
   const clientTopBegin = 0;
-  
   if (tooltip.getBoundingClientRect().y < clientTopBegin) {
     const formulaItem = tooltip.closest('.formula-item');
 
@@ -18,7 +17,7 @@ const tooltipOut = (tooltip) => {
   formulaItem.classList.remove('formula-item_cover');
 };
 
-const tooltipHandler = (event) => {
+const tooltipTamer = (event) => {
   const target = event.target;
   
   if (!target.matches('.formula-item__icon-inner-text')) return;
@@ -33,8 +32,8 @@ const tooltipHandler = (event) => {
 };
 
 const tooltipsFormula = () => {
-  wrapper.addEventListener('mouseover', tooltipHandler);
-  wrapper.addEventListener('mouseout', tooltipHandler);
+  wrapper.addEventListener('mouseover', tooltipTamer);
+  wrapper.addEventListener('mouseout', tooltipTamer);
 };
 
 export default tooltipsFormula;
