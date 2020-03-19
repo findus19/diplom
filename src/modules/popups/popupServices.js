@@ -91,9 +91,6 @@ const services = () => {
         throw new Error(response.statusText);
       }
       return response.json();
-    }, (error) => {
-      messageStatus.src = messages.error;
-      console.error(error);
     })
     .then(priceDoIt);
     

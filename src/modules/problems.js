@@ -3,7 +3,7 @@ const wrapper = document.querySelector('.problems .wrapper_middle');
 const tooltipOver = (tooltip) => {
   const clientTopBegin = 0;
   
-  if (tooltip.getBoundingClientRect().y < clientTopBegin) {
+  if (tooltip.getBoundingClientRect().top < clientTopBegin) {
     const problemsItem = tooltip.closest('.problems-item');
     
     tooltip.classList.add('tooltip_reverse');

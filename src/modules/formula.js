@@ -2,7 +2,7 @@ const wrapper = document.querySelector('.formula .wrapper_small');
 
 const tooltipOver = (tooltip) => {
   const clientTopBegin = 0;
-  if (tooltip.getBoundingClientRect().y < clientTopBegin) {
+  if (tooltip.getBoundingClientRect().top < clientTopBegin) {
     const formulaItem = tooltip.closest('.formula-item');
     console.dir(formulaItem);
     tooltip.classList.add('tooltip_reverse');

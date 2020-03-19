@@ -1,4 +1,4 @@
-import {openThanksPopup} from './modals/popupThank';
+import {openThanksPopup} from './popups/popupThank';
 const forms = document.querySelectorAll('.feedback__form, .feedback-block__form');
 
 const postData = (body) => {
