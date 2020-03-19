@@ -291,3 +291,7 @@
   width: 100%;
   object-fit: fill;
 }
+.button-footer a{
+  text-align: center;
+  margin: 10px auto;
+}
