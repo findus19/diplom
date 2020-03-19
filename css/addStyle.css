@@ -29,6 +29,9 @@
 .problems-slider-wrap {
   position: relative;
 }
+.formula-item-popup_down:before{
+  transform: rotate(180deg);
+}
 .formula-slider,
 .problems-slider {
   overflow: hidden;

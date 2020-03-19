@@ -34,7 +34,8 @@ import popupTransparency from './modules/popups/popupTransparency';
 import services from './modules/popups/popupServices';
 import portfolio from './modules/popups/popupPortfolio';
 import design from './modules/designCarousel';
-import popupDesign from './modules/popups/popupDesign'
+import popupDesign from './modules/popups/popupDesign';
+import Tooltip from './modules/tooltip';
 
 openPhone();
 
@@ -52,7 +53,7 @@ popupRepairTypes();
 
 popupPrivacy();
 
-tooltipsFormula();
+//tooltipsFormula();
 
 formulaSlider();
 
@@ -64,7 +65,7 @@ popupConsultation();
 
 scheme();
 
-tooltipsProblems();
+//tooltipsProblems();
 
 problemsSlider();
 
@@ -80,5 +81,19 @@ design();
 
 popupDesign();
 
+const tooltipFormula = new Tooltip({
+    wrap: '#formula',
+    item: '.formula-item__icon',
+    popup: '.formula-item-popup',
+    icon: '.formula-item'
+  });
+  tooltipFormula.init();
 
+  const tooltipProblems = new Tooltip({
+    wrap: '#problems',
+    item: '.problems-item__icon',
+    popup: '.problems-item-popup',
+    icon: '.problems-item'
+  });
+  tooltipProblems.init();
 
