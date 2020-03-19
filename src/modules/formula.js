@@ -4,7 +4,6 @@ const tooltipOver = (tooltip) => {
   const clientTopBegin = 0;
   if (tooltip.getBoundingClientRect().top < clientTopBegin) {
     const formulaItem = tooltip.closest('.formula-item');
-    console.dir(formulaItem);
     tooltip.classList.add('tooltip_reverse');
     formulaItem.classList.add('formula-item_cover');
   }

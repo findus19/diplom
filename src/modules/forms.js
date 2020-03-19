@@ -15,7 +15,6 @@ const sendForm = (event) =>{
     event.preventDefault();
     const target = event.target;
     const check = target.querySelector('.checkbox__input');
-    console.log(123)
 
     if(!check.checked){
         alert('Согласитесь с политикой конфиденциальности');
@@ -31,7 +30,6 @@ const sendForm = (event) =>{
         if (response.status !== 200) {
           throw new Error(response.statusText);
         }
-        console.log(321);
         openThanksPopup();
   
       }, (error) => {

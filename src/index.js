@@ -5,6 +5,8 @@ import elementClosest from 'element-closest';
 elementClosest(window);
 import 'new-event-polyfill';
 import 'remove-polyfill';
+import smoothscroll from 'smoothscroll-polyfill';
+smoothscroll.polyfill();
 import 'formdata-polyfill';
 import 'es6-promise';
 import 'fetch-polyfill';

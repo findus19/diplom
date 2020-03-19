@@ -29,6 +29,7 @@
     "formdata-polyfill": "^3.0.19",
     "new-event-polyfill": "^1.0.1",
     "nodelist-foreach-polyfill": "^1.2.0",
-    "remove-polyfill": "^1.0.0"
+    "remove-polyfill": "^1.0.0",
+    "smoothscroll-polyfill": "^0.4.4"
   }
 }
