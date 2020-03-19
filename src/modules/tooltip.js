@@ -17,9 +17,7 @@ class Tooltip {
         }
       });
     }
-  
-  
-  
+
     mouseover(){
       document.querySelector(this.wrap).addEventListener('mouseover', e => {
         if(document.documentElement.clientWidth > 1023) {

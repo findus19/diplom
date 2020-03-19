@@ -17,9 +17,9 @@ const sendForm = (event) =>{
     const check = target.querySelector('.checkbox__input');
 
     if(!check.checked){
-        alert('Согласитесь с политикой конфиденциальности');
+      target.querySelector('.checkbox__label').style.border = '2px solid red';
     } else{
-
+      target.querySelector('.checkbox__label').style.border = '';
       const formData = new FormData(target);
       let body = {};
       formData.forEach((val, key) => {
