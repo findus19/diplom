@@ -36,7 +36,7 @@ export class SliderCarousel {
 
     this.event = new Event('sliderChange');
     this.tabEvent = new Event('tabChange');
-    this.eventAfter = new Event('eventAfter')
+    this.eventAfter = new Event('eventAfter');
     this.tabs = document.querySelector(tabs);
     this.classTab = classTab;
     this.moveSlide = moveSlide.toUpperCase();

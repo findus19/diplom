@@ -10,6 +10,7 @@ smoothscroll.polyfill();
 import 'formdata-polyfill';
 import 'es6-promise';
 import 'fetch-polyfill';
+import 'classlist-polyfill';
 
 import openPhone from './modules/openPhone';
 import openModal from './modules/openPopups';
